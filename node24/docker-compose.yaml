@@ -1,0 +1,20 @@
+services:
+  nodejs24-dev:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+      CHOKIDAR_INTERVAL: 1000
+    volumes:
+      - <host-source-code-src>:/source_code
+      - <pj-demo1-volume>:/source_code/<pj-demo1-volume>/node_modules
+    networks:
+      - dev-network
+
+volumes:
+  <pj-demo1-volume>:
+
+networks:
+  dev-network:
+    external: true
