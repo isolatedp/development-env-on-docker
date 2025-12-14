@@ -1,0 +1,19 @@
+services:
+  py312uv-dev:
+    container_name: py312-dev
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    # environment:
+    volumes:
+      - <host-source-code-src>:/source_code
+      - <pj-demo1-volume>:/source_code/<pj-demo1-volume>/.venv
+    networks:
+      - dev-network
+
+volumes:
+  <pj-demo1-volume>:
+
+networks:
+  dev-network:
+    external: true
