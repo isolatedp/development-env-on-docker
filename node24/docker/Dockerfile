@@ -4,8 +4,14 @@ FROM node:24.12.0-bookworm-slim
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     vim \
     curl \
+    procps \
     locales && \
-    locale-gen en_US.UTF-8 zh_TW.UTF-8 && \
+    echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+    echo "zh_TW.UTF-8 UTF-8" >> /etc/locale.gen && \
+    echo "LANG=en_US.UTF-8" > /etc/default/locale && \
+    echo "LANGUAGE=en_US:en" >> /etc/default/locale && \
+    echo "LC_ALL=en_US.UTF-8" >> /etc/default/locale && \
+    locale-gen && \
     rm -rf /var/lib/apt/lists/*
 
 # 安裝系統時區套件(使用 UTC 可註解掉)
@@ -30,6 +36,3 @@ RUN mkdir -p /source_code && \
 WORKDIR /source_code
 
 CMD ["tail", "-f", "/dev/null"]
-
-
-
