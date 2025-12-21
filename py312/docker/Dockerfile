@@ -21,6 +21,13 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     dpkg-reconfigure -f noninteractive tzdata && \
     rm -rf /var/lib/apt/lists/*
 
+# 安裝編譯套件，uWSGI 使用
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    gcc \
+    python3-dev \
+    libpcre3-dev && \
+    rm -rf /var/lib/apt/lists/*
+
 # 安裝 uv 套件管理工具
 COPY --from=docker.io/astral/uv:latest /uv /uvx /bin/
 

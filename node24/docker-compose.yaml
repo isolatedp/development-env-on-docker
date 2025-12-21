@@ -1,5 +1,6 @@
 services:
   nodejs24-dev:
+    container_name: nodejs24-dev
     build:
       context: .
       dockerfile: ./docker/Dockerfile
