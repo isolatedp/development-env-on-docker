@@ -9,7 +9,7 @@ services:
       CHOKIDAR_INTERVAL: 1000
     volumes:
       - <host-source-code-src>:/source_code
-      - <pj-demo1-volume>:/source_code/<pj-demo1-volume>/node_modules
+      - <pj-demo1-volume>:/source_code/<pj-demo1>/node_modules
     networks:
       - dev-network
 

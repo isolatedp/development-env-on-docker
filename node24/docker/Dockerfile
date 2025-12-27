@@ -2,6 +2,7 @@ FROM node:24.12.0-bookworm-slim
 
 # 安裝系統語系套件，並設定預設英文語系與支援中文語系
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    git \
     vim \
     curl \
     procps \
